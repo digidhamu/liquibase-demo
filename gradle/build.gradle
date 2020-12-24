@@ -1,0 +1,32 @@
+plugins {
+  id 'org.liquibase.gradle' version '2.0.3'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  liquibaseRuntime 'org.liquibase:liquibase-core:3.8.1'
+  liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
+  liquibaseRuntime 'mysql:mysql-connector-java:8.0.12'
+}
+
+def changeLog = "$projectDir/src/main/db/changelog.xml"
+
+task dev {
+	doLast {
+		println "executing dev"
+
+		liquibase {
+			activities {
+				main {
+					changeLogFile changeLog
+					url 'jdbc:mysql://dev-environment/mydb'
+					username 'root'
+					password '123456'
+				}
+			}
+		}
+	}
+}
