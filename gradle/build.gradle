@@ -9,7 +9,8 @@ repositories {
 dependencies {
   liquibaseRuntime 'org.liquibase:liquibase-core:3.8.1'
   liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
-  liquibaseRuntime 'mysql:mysql-connector-java:8.0.12'
+//   liquibaseRuntime 'mysql:mysql-connector-java:8.0.12'
+  liquibaseRuntime 'com.oracle.database.jdbc:ojdbc8:12.2.0.1'
 }
 
 def changeLog = "$projectDir/src/main/db/changelog.xml"
@@ -18,11 +19,21 @@ task dev {
 	doLast {
 		println "executing dev"
 
+		// liquibase {
+		// 	activities {
+		// 		main {
+		// 			changeLogFile changeLog
+		// 			url 'jdbc:mysql://dev-environment/mydb'
+		// 			username 'root'
+		// 			password '123456'
+		// 		}
+		// 	}
+		// }
 		liquibase {
 			activities {
 				main {
 					changeLogFile changeLog
-					url 'jdbc:mysql://dev-environment/mydb'
+					url 'jdbc:oracle:thin:@127.0.0.1:80/dhamukrish'
 					username 'root'
 					password '123456'
 				}
