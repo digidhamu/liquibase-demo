@@ -1,6 +1,9 @@
 https://github.com/liquibase/liquibase-gradle-plugin
+
 https://github.com/stevesaliman/liquibase-workshop
+
 https://github.com/salerno-rafael/liquibase-sandbox
+
 https://dzone.com/articles/managing-your-database-with-liquibase-and-gradle
 
 `gradle wrapper`
